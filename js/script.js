@@ -13,7 +13,10 @@
     adds.forEach(function(a){if(a.checked){lo+=+a.value;names.push(a.parentNode.textContent.trim())}});
     var step=lo>=1000?100:10,hi=Math.round(lo*1.4/step)*step,cur=type.dataset.cur||'$',fmt=function(n){return cur+n.toLocaleString('en-US')};
     out.textContent=fmt(lo)+' to '+fmt(hi);out.classList.remove('pop');void out.offsetWidth;out.classList.add('pop');
-    mail.href='mailto:Bernardbriola0826@gmail.com?subject='+encodeURIComponent('Website estimate request')+'&body='+encodeURIComponent('I’d like a quote for:\n- '+names.join('\n- ')+'\n\nEstimate shown: '+fmt(lo)+' to '+fmt(hi)+'\n\nAbout my business:\n');
+    var body='I’d like a quote for:\n- '+names.join('\n- ')+'\n\nEstimate shown: '+fmt(lo)+' to '+fmt(hi)+'\n\nAbout my business:\n';
+    mail.href='mailto:Bernardbriola0826@gmail.com?subject='+encodeURIComponent('Website estimate request')+'&body='+encodeURIComponent(body);
+    var gm=document.getElementById('e-gmail');
+    if(gm)gm.href='https://mail.google.com/mail/?view=cm&fs=1&to=Bernardbriola0826@gmail.com&su='+encodeURIComponent('Website estimate request')+'&body='+encodeURIComponent(body);
   }
   type.addEventListener('change',est);adds.forEach(function(a){a.addEventListener('change',est)});est();
   var clock=document.getElementById('clock');
